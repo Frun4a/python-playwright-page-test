@@ -24,6 +24,10 @@ class Component(ABC):
             locator = self.get_locator(**kwargs)
             locator.click()
 
+    def is_visible(self, **kwargs) -> bool:
+        locator = self.get_locator(**kwargs)
+        return locator.is_visible()
+
     def should_be_visible(self, **kwargs):
         with allure.step(f'Checking that {self.type_of} "{self.name}" is visible'):
             locator = self.get_locator(**kwargs)
